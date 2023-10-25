@@ -31,59 +31,70 @@ function PostList({ meta, posts, dataID, categoryID, ID }) {
       </Head>
       <main>
         {" "}
-        <div className="container-2"></div>
-        <div className="page2-row-satu">
-          {" "}
-          <Link href="/">
-            <Image
-              src="/logo.png"
-              width={99}
-              height={29}
-              alt="Picture of the author"
-            />
-          </Link>
-        </div>{" "}
-        <div className="page3-row-satu">Related Post List</div>
-        <div className="page3-row-dua">
-          <div className="page3-row-dua-satu">
-            {" "}
-            <img className="card-3" src={dataID.data.thumbnail}></img>
-          </div>
-          <div className="page3-row-dua-dua">
-            <div className="page3-row-dua-dua-satu">{dataID.data.title}</div>
-            <div className="page3-row-dua-dua-dua">{dataID.data.summary}</div>
-          </div>
-        </div>
-        {displayPosts.map((post, index) => {
-          return (
-            <div key={post.id}>
+        <div className="body-header">
+          <div className="container">
+            <div className="page2-row-satu">
               {" "}
-              <div className="page3-row-tiga">
-                <div className="page3-row-tiga-satu">
-                  <div className="page3-row-tiga-satu-satu">
-                    {(index + 1).toString().padStart(2, "0")}
-                  </div>
-                  <div className="page3-row-tiga-satu-dua">{post.title}</div>
-                  <div className="page3-row-tiga-satu-tiga">{post.summary}</div>
+              <Link href="/">
+                <Image
+                  src="/logo.png"
+                  width={99}
+                  height={29}
+                  alt="Picture of the author"
+                />
+              </Link>
+            </div>{" "}
+            <div className="page3-row-satu">Related Post List</div>
+            <div className="page3-row-dua">
+              <div className="page3-row-dua-satu">
+                {" "}
+                <img className="card-3" src={dataID.data.thumbnail}></img>
+              </div>
+              <div className="page3-row-dua-dua">
+                <div className="page3-row-dua-dua-satu">
+                  {dataID.data.title}
                 </div>
-                <div className="page3-row-tiga-dua">
-                  <img className="card-3" src={post.thumbnail}></img>
+                <div className="page3-row-dua-dua-dua">
+                  {dataID.data.summary}
                 </div>
               </div>
             </div>
-          );
-        })}
-        <div className="row-tiga">
-          {" "}
-          <button
-            onClick={loadMore}
-            className={`btn-load-more ${
-              pageSekarang === totalPage || totalPage === 0 ? "hidden" : ""
-            }`}
-            type="button"
-          >
-            Load More
-          </button>
+          </div>
+        </div>
+        <div className="body-content">
+          {displayPosts.map((post, index) => {
+            return (
+              <div key={post.id}>
+                {" "}
+                <div className="page3-row-tiga">
+                  <div className="page3-row-tiga-satu">
+                    <div className="page3-row-tiga-satu-satu">
+                      {(index + 1).toString().padStart(2, "0")}
+                    </div>
+                    <div className="page3-row-tiga-satu-dua">{post.title}</div>
+                    <div className="page3-row-tiga-satu-tiga">
+                      {post.summary}
+                    </div>
+                  </div>
+                  <div className="page3-row-tiga-dua">
+                    <img className="card-3" src={post.thumbnail}></img>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+          <div className="row-tiga">
+            {" "}
+            <button
+              onClick={loadMore}
+              className={`btn-load-more ${
+                pageSekarang === totalPage || totalPage === 0 ? "hidden" : ""
+              }`}
+              type="button"
+            >
+              Load More
+            </button>
+          </div>
         </div>
       </main>
     </>

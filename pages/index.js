@@ -48,82 +48,84 @@ function PostList({ meta, posts, query }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <div className="row-satu">
-          <div className="col-satu-row-satu">
-            <button
-              className={`${newMenu === 0 ? "btn-aktif" : "btn-non-aktif"}`}
-              type="button"
-              onClick={btnPopularClick}
-            >
-              Popular
-            </button>
+        <div className="body-content">
+          <div className="row-satu">
+            <div className="col-satu-row-satu">
+              <button
+                className={`${newMenu === 0 ? "btn-aktif" : "btn-non-aktif"}`}
+                type="button"
+                onClick={btnPopularClick}
+              >
+                Popular
+              </button>
+            </div>
+            <div className="col-dua-row-satu">
+              <button
+                className={`${newMenu === 1 ? "btn-aktif" : "btn-non-aktif"}`}
+                type="button"
+                onClick={btnNewClick}
+              >
+                New
+              </button>
+            </div>
+            <div className="col-tiga-row-satu">
+              {" "}
+              <Image
+                src="/logo.png"
+                width={99}
+                height={29}
+                alt="Picture of the author"
+              />
+            </div>
+            <div className="col col-dua-row-satu"></div>
           </div>
-          <div className="col-dua-row-satu">
-            <button
-              className={`${newMenu === 1 ? "btn-aktif" : "btn-non-aktif"}`}
-              type="button"
-              onClick={btnNewClick}
-            >
-              New
-            </button>
-          </div>
-          <div className="col-tiga-row-satu">
-            {" "}
-            <Image
-              src="/logo.png"
-              width={99}
-              height={29}
-              alt="Picture of the author"
-            />
-          </div>
-          <div className="col col-dua-row-satu"></div>
-        </div>
 
-        {displayPosts.map((post) => {
-          return (
-            <div key={post.id}>
-              <div className="row-dua">
-                <div className="col-satu-row-dua">
-                  <img className="card" src={post.thumbnail}></img>
-                </div>
-                <div className="col-dua-row-dua">
-                  {" "}
-                  <div>
-                    <span className="abu">By </span>
-                    <span className="hitam">
-                      {post.author.firstName} {post.author.lastName}{" "}
-                    </span>
-                    <span className="abu">in</span>{" "}
-                    <span className="hitam">{post.category.name}</span>
+          {displayPosts.map((post) => {
+            return (
+              <div key={post.id}>
+                <div className="row-dua">
+                  <div className="col-satu-row-dua">
+                    <img className="card" src={post.thumbnail}></img>
+                  </div>
+                  <div className="col-dua-row-dua">
+                    {" "}
+                    <div>
+                      <span className="abu">By </span>
+                      <span className="hitam">
+                        {post.author.firstName} {post.author.lastName}{" "}
+                      </span>
+                      <span className="abu">in</span>{" "}
+                      <span className="hitam">{post.category.name}</span>
+                    </div>
+                  </div>
+                  <div className="col-tiga-row-dua">
+                    <Link
+                      href={{
+                        pathname: "/[slug]",
+                        query: {},
+                      }}
+                      as={`/${post.slug}`}
+                    >
+                      {post.title}
+                    </Link>
                   </div>
                 </div>
-                <div className="col-tiga-row-dua">
-                  <Link
-                    href={{
-                      pathname: "/[slug]",
-                      query: {},
-                    }}
-                    as={`/${post.slug}`}
-                  >
-                    {post.title}
-                  </Link>
-                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
 
-        <div className="row-tiga">
-          {" "}
-          <button
-            onClick={loadMore}
-            className={`btn-load-more ${
-              pageSekarang === totalPage ? "hidden" : ""
-            }`}
-            type="button"
-          >
-            Load More
-          </button>
+          <div className="row-tiga">
+            {" "}
+            <button
+              onClick={loadMore}
+              className={`btn-load-more ${
+                pageSekarang === totalPage ? "hidden" : ""
+              }`}
+              type="button"
+            >
+              Load More
+            </button>
+          </div>
         </div>
       </main>
     </>

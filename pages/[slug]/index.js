@@ -30,84 +30,89 @@ function PostList({ data }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        {" "}
-        <div className="container"></div>
-        <div className="page2-row-satu">
-          <Link href="/">
-            <Image
-              src="/logo.png"
-              width={99}
-              height={29}
-              alt="Picture of the author"
-            />
-          </Link>
-        </div>{" "}
-        <div className="page2-row-dua">
-          <div className="">{post.title}</div>
-        </div>{" "}
-        <div className="page2-row-tiga">
-          <div className="">{post.summary}</div>
-        </div>{" "}
-        <div className="page2-row-empat">
-          {" "}
-          <div>
-            <span className="abu">By </span>
-            <span className="hitam">
-              {post.author.firstName} {post.author.lastName}{" "}
-            </span>
-            <span className="abu">in</span>{" "}
-            <span className="hitam">{post.category.name}</span>
-          </div>
-        </div>
-        <div className="page2-row-lima">
-          {" "}
-          <div key={post.id}>
-            <img className="card-2" src={post.thumbnail}></img>
-          </div>
-        </div>{" "}
-        <div className="page2-row-enam">
-          <div className="">{post.content}</div>
-        </div>{" "}
-        <div className="page2-row-tujuh">
-          <div className="page2-row-tujuh-satu">You might also like...</div>
-          <div className="page2-row-tujuh-dua">
-            {" "}
-            <Link
-              href={{
-                pathname: "/[slug]/relates",
-                query: {},
-              }}
-              as={`/${post.slug}/relates`}
-            >
-              More
-            </Link>
-          </div>
-        </div>
-        <div className="page2-row-delapan">
-          {displayPosts.map((relatedPost) => {
-            return (
+        <div className="body-header">
+          <div className="container">
+            <div className="page2-row-satu">
+              <Link href="/">
+                <Image
+                  src="/logo.png"
+                  width={99}
+                  height={29}
+                  alt="Picture of the author"
+                />
+              </Link>
+            </div>{" "}
+            <div className="page2-row-dua">
+              <div className="">{post.title}</div>
+            </div>{" "}
+            <div className="page2-row-tiga">
+              <div className="">{post.summary}</div>
+            </div>{" "}
+            <div className="page2-row-empat">
+              {" "}
               <div>
-                {" "}
-                <div className="page2-row-delapan-satu">
-                  <img src={relatedPost.thumbnail}></img>
-                </div>{" "}
-                <div className="page2-row-delapan-dua">
-                  <span className="abu">By </span>
-                  <span className="hitam">
-                    {relatedPost.author.firstName} {relatedPost.author.lastName}{" "}
-                  </span>
-                  <span className="abu">in</span>{" "}
-                  <span className="hitam">{relatedPost.category.name}</span>
-                </div>{" "}
-                <div className="page2-row-delapan-tiga">
-                  <div className="">{relatedPost.title}</div>
-                </div>{" "}
-                <div className="page2-row-delapan-empat">
-                  <div className="">{relatedPost.summary}</div>
-                </div>
+                <span className="abu">By </span>
+                <span className="hitam">
+                  {post.author.firstName} {post.author.lastName}{" "}
+                </span>
+                <span className="abu">in</span>{" "}
+                <span className="hitam">{post.category.name}</span>
               </div>
-            );
-          })}
+            </div>
+          </div>
+        </div>
+        <div className="body-content">
+          <div className="page2-row-lima">
+            {" "}
+            <div key={post.id}>
+              <img className="card-2" src={post.thumbnail}></img>
+            </div>
+          </div>{" "}
+          <div className="page2-row-enam">
+            <div className="">{post.content}</div>
+          </div>{" "}
+          <div className="page2-row-tujuh">
+            <div className="page2-row-tujuh-satu">You might also like...</div>
+            <div className="page2-row-tujuh-dua">
+              {" "}
+              <Link
+                href={{
+                  pathname: "/[slug]/relates",
+                  query: {},
+                }}
+                as={`/${post.slug}/relates`}
+              >
+                More
+              </Link>
+            </div>
+          </div>
+          <div className="page2-row-delapan">
+            {displayPosts.map((relatedPost) => {
+              return (
+                <div>
+                  {" "}
+                  <div className="page2-row-delapan-satu">
+                    <img src={relatedPost.thumbnail}></img>
+                  </div>{" "}
+                  <div className="page2-row-delapan-dua">
+                    <span className="abu">By </span>
+                    <span className="hitam">
+                      {relatedPost.author.firstName}{" "}
+                      {relatedPost.author.lastName}{" "}
+                    </span>
+                    <span className="abu">in</span>{" "}
+                    <span className="hitam">{relatedPost.category.name}</span>
+                  </div>{" "}
+                  <div className="page2-row-delapan-tiga">
+                    <div className="">{relatedPost.title}</div>
+                  </div>{" "}
+                  <div className="page2-row-delapan-empat">
+                    <div className="">{relatedPost.summary}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </main>
     </>
